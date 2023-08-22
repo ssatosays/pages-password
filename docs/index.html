@@ -1,1 +1,46 @@
-index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ssatosays/pages-password</title>
+</head>
+<body>
+  <form onsubmit="event.preventDefault(); hashAndRedirect();">
+    <input type="password" id="password" placeholder="Enter password">
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function hashAndRedirect() {
+      const password = document.getElementById('password').value;
+
+      if (!password) {
+        alert('Please enter a password.');
+        return;
+      }
+
+      if (password.includes(' ') || password.includes('　')) {
+        alert('Password should not contain spaces.');
+        return;
+      }
+
+      async function sha256(pw) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(pw);
+        const hash = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(hash))
+          .map(b => b.toString(16).padStart(2, '0'))
+          .join('');
+      }
+
+      sha256(password).then(hash => {
+        const userid = 'ssatosays';
+        const repo = 'pages-password';
+        const url = `https://${userid}.github.io/${repo}/${hash}`;
+        window.location.href = url;
+      });
+    }
+  </script>
+</body>
+</html>
