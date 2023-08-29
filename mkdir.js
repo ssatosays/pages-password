@@ -10,6 +10,9 @@ function makeDirectoryWithHash(pw) {
   const dirName = 'docs/' + sha256(pw);
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName);
+    fs.writeFile(dirName + '/index.html', '', (err) => {
+      if (err) throw err;
+    });
     console.log(`Directory named "${dirName}" created.`);
   } else {
     console.log(`Directory named "${dirName}" already exists.`);
