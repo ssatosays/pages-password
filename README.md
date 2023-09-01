@@ -1,5 +1,10 @@
 # pages-password
 
+## demo
+
+- password
+  - password123
+
 ## setup
 
 #### 1. Edit `userid` and `repo` in `docs/index.html`
