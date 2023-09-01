@@ -2,7 +2,10 @@
 
 ## demo
 
-- password123
+- Url
+  - https://ssatosays.github.io/pages-password/
+- Password
+  - password123
 
 <img src="https://github.com/ssatosays/pages-password/assets/86867075/c132caf3-c548-45ef-9de7-d7d3466eb368" width="75%"/>
 
